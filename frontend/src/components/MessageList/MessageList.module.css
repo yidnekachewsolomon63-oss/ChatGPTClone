@@ -1,0 +1,159 @@
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  scroll-behavior: smooth;
+}
+
+/* Welcome / empty state */
+.welcome {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+  text-align: center;
+}
+
+.welcomeIcon {
+  width: 56px;
+  height: 30px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #10a37f;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcomeTitle {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.suggestions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 620px;
+}
+
+.suggestion {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  padding: 14px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: transparent;
+  color: var(--text-primary);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.suggestion:hover {
+  background-color: var(--bg-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.suggestionTitle {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.suggestionText {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Loading dots */
+.loadingContainer {
+  display: flex;
+  padding: 0 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 16px;
+}
+
+.loadingAvatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #10a37f;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.loadingDot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--text-secondary);
+  border-radius: 50%;
+  animation: pulse 1.3s infinite ease-in-out;
+}
+
+.loadingDot:nth-child(2) {
+  animation-delay: 0.18s;
+}
+
+.loadingDot:nth-child(3) {
+  animation-delay: 0.36s;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0.7);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .messages {
+    padding: 16px 0;
+    gap: 18px;
+  }
+
+  .welcome {
+    justify-content: flex-start;
+    padding-top: 32px;
+  }
+
+  .suggestions {
+    grid-template-columns: 1fr;
+  }
+
+  .loadingContainer {
+    padding: 0 16px;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,272 @@
+.message {
+  display: flex;
+  padding: 0 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 16px;
+}
+
+.message.user {
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.avatar.user {
+  background-color: #3b82f6;
+}
+
+.avatar.assistant {
+  background-color: #10a37f;
+}
+
+.content {
+  position: relative;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.message.user .content {
+  max-width: 78%;
+}
+
+.userText {
+  background-color: var(--bg-hover);
+  border-radius: 18px;
+  padding: 10px 16px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+}
+
+/* Actions (copy) */
+.actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.message:hover .actions,
+.actions:focus-within {
+  opacity: 1;
+}
+
+.actionBtn,
+.codeCopy {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  padding: 5px 7px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.actionBtn:hover,
+.codeCopy:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Streaming cursor */
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  background-color: var(--text-primary);
+  border-radius: 1px;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Code blocks */
+.codeBlock {
+  margin: 4px 0 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #0d0d0d;
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px 6px 14px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.codeLang {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+}
+
+/* Markdown */
+.markdownBody {
+  line-height: 1.7;
+  word-break: break-word;
+}
+
+.markdownBody > *:first-child {
+  margin-top: 0;
+}
+
+.markdownBody > *:last-child {
+  margin-bottom: 0;
+}
+
+.markdownBody p {
+  margin: 0 0 16px;
+}
+
+.markdownBody h1,
+.markdownBody h2,
+.markdownBody h3,
+.markdownBody h4,
+.markdownBody h5,
+.markdownBody h6 {
+  margin: 24px 0 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.markdownBody h1 {
+  font-size: 1.75em;
+}
+.markdownBody h2 {
+  font-size: 1.4em;
+}
+.markdownBody h3 {
+  font-size: 1.2em;
+}
+
+.markdownBody ul,
+.markdownBody ol {
+  margin: 8px 0 16px;
+  padding-left: 1.6em;
+}
+
+.markdownBody li {
+  margin-bottom: 6px;
+}
+
+.markdownBody li > p {
+  margin: 0;
+}
+
+.markdownBody a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.markdownBody a:hover {
+  text-decoration: underline;
+}
+
+.markdownBody blockquote {
+  margin: 0 0 16px;
+  padding: 2px 16px;
+  color: var(--text-secondary);
+  border-left: 3px solid var(--border-color);
+}
+
+.markdownBody hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid var(--border-color);
+}
+
+.markdownBody table {
+  width: 100%;
+  margin-bottom: 16px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.markdownBody th,
+.markdownBody td {
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdownBody th {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.markdownBody code {
+  padding: 0.15em 0.4em;
+  font-size: 0.86em;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    "SF Mono",
+    Menlo,
+    Consolas,
+    "Liberation Mono",
+    monospace;
+}
+
+/* react-markdown wraps highlighted code in a styled div;
+   keep spacing consistent with our custom CodeBlock. */
+.markdownBody pre {
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  overflow: auto;
+  font-size: 0.86em;
+  background-color: #0d0d0d;
+  border-radius: 10px;
+}
+
+.markdownBody pre code {
+  padding: 0;
+  background: transparent;
+  font-size: inherit;
+}
+
+@media (max-width: 640px) {
+  .message {
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .message.user .content {
+    max-width: 88%;
+  }
+}

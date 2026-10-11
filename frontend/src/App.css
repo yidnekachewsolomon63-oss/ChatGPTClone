@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --bg-main: #212121;
+  --bg-sidebar: #171717;
+  --bg-input: #2f2f2f;
+  --bg-hover: rgba(255, 255, 255, 0.08);
+  --text-primary: #ececec;
+  --text-secondary: #9b9b9b;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --accent-color: #10a37f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout */
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+}
+
+/* Scrollbars */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.28);
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Error banner */
+.error-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px auto 0;
+  padding: 10px 14px;
+  width: min(760px, calc(100% - 32px));
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  border-radius: 10px;
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #fecaca;
+  font-size: 14px;
+}
+
+.error-banner__actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.error-banner__retry,
+.error-banner__dismiss {
+  padding: 6px 12px;
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  border-radius: 8px;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.error-banner__retry:hover,
+.error-banner__dismiss:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+@media (max-width: 640px) {
+  .error-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .error-banner__actions {
+    width: 100%;
+  }
+}
